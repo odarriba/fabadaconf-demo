@@ -1,0 +1,11 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: odarriba-clusterrolebinding
+subjects:
+- kind: User
+  name: odarriba@gmail.com
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: ""

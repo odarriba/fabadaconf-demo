@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 8080:80
+    depends_on:
+      - mysql
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: fabaders
+      WORDPRESS_DB_PASSWORD: la_fabadaconf_mola_mogollon
+      WORDPRESS_DB_NAME: fabadablog
+      WORDPRESS_AUTH_KEY: '+AGI2Gd@=9aCj?[^L@OL/OPT!L.Fv?Qnn%dZ[vX.2+QVAFQcR=nQg32K3*z&DvNs'
+      WORDPRESS_SECURE_AUTH_KEY: 'Sb(e?7)(=n<-ZuKQnP(`+hxJ*^8H@|X:Zs/`_kt hsfao]e#*NyWu1V|A6N_gr:W'
+      WORDPRESS_LOGGED_IN_KEY: 'g0!@}O_6oY H||^QrI9 3sEZKuzSDZOYN:/.jESW)pBIE{jGn9CVP%*3R!w_K,@+'
+      WORDPRESS_NONCE_KEY: '35UkH@Lt1z@f~e459ft<SUv@TdN2;U)8WJ(]x[zGgCZLR,kh)gxi}BA/y==&H[V|'
+      WORDPRESS_AUTH_SALT: 't0jwGIBv12+Dt?S[=BfQR]9iUU!:a5Otuq7E=JAn}A]/Gc+k<d5t o!ej,G#<0xL'
+      WORDPRESS_SECURE_AUTH_SALT: '*[?;i3!j+?Igl5p5s#X<u`bp~-Pwu?k]9NkLFw~<SRonuo9fc=%?pSej.}G#*>P`'
+      WORDPRESS_LOGGED_IN_SALT: '1g3O+/e+J)KBv!p[xw-<lB=a<[G5]]s-s+2-J)bt4]w)k[vSa9[=9.!M.e^OXWUh'
+      WORDPRESS_NONCE_SALT: '09a]sr)~+`t}d?(@t4Or8yhu3c|8@(}#i5Ic5iaUvkObUm-&Xuz}s6`lp[^W9nf/'
+  mysql:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - "./mysql_data:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: sup3r-m3g4-s3cr3t-p4ssw0rd
+      MYSQL_USER: fabaders
+      MYSQL_PASSWORD: la_fabadaconf_mola_mogollon
+      MYSQL_DATABASE: fabadablog

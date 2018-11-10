@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: wordpress
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 20m
+spec:
+  tls:
+  - hosts:
+    - fabadaword.press
+    - www.fabadaword.press
+    secretName: wordpress-tls
+  rules:
+  - host: fabadaword.press
+    http:
+      paths:
+      - backend:
+          serviceName: wordpress
+          servicePort: 80
+  - host: www.fabadaword.press
+    http:
+      paths:
+      - backend:
+          serviceName: wordpress
+          servicePort: 80
